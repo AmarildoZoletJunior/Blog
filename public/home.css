@@ -1,0 +1,171 @@
+html{
+    background: #20BDFF;
+}
+body{
+    background: #20BDFF;
+}
+.corpo{
+    height: 55vh;
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.bola{
+    position:absolute;
+    width: 1350px;
+    height: 1000px;
+    /* background-color: #eca1a6; */
+    background: #8E2DE2;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #5500ff, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 500px;
+    left: 5px;
+    top: -650px;
+    z-index: 1;
+}
+.total{
+    background-color: #b3f5f6;
+    position:relative;
+    z-index: 0;
+}
+.titulo img{
+    width: 250px;
+    position:relative;
+    z-index: 2;
+    color: white;
+    font-family: 'https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap';
+}
+.buttonHome{
+    background-color: #210a50;
+    height: 45px;
+    width: 150px;
+    border-color: none;
+    border: none;
+    color: white;
+    position:relative;
+    z-index: 2;
+}
+.Login{
+    border: none;
+    position:relative;
+    z-index: 2;
+}
+.blog{
+    margin-top: 20px;
+    position:relative;
+    z-index: 3;
+}
+.card{
+    cursor:pointer;
+    height: 100px;
+    line-height: 50px;
+}
+@media (max-width: 575.98px) { 
+    .bola{
+        position:absolute;
+        width: 480px;
+        height: 600px;
+        /* background-color: #eca1a6; */
+        background: #8E2DE2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5500ff, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+        border-radius: 500px;
+        top: -300px;
+        z-index: 1;
+    }
+    .buttonHome{
+        background-color: #210a50;
+        height: 30px;
+        width: 100px;
+        border-color: none;
+        border: none;
+        color: white;
+        position:relative;
+        z-index: 2;
+        margin-right: 5px;
+    }
+ }
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+    .bola{
+        position:absolute;
+        width: 655px;
+        height: 600px;
+        /* background-color: #eca1a6; */
+        background: #8E2DE2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5500ff, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+        border-radius: 500px;
+        top: -300px;
+        z-index: 1;
+    }
+    .buttonHome{
+        background-color: #210a50;
+        height: 40px;
+        width: 120px;
+        border-color: none;
+        border: none;
+        color: white;
+        position:relative;
+        z-index: 2;
+        margin-right: 10px;
+    }
+}
+
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .bola{
+        position:absolute;
+        width: 1020px;
+        height: 1000px;
+        /* background-color: #eca1a6; */
+        background: #8E2DE2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5500ff, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+        border-radius: 500px;
+        left: -130px;
+        top: -650px;
+        z-index: 1;
+    }
+    .buttonHome{
+        background-color: #210a50;
+        height: 42px;
+        width: 130px;
+        border-color: none;
+        border: none;
+        color: white;
+        position:relative;
+        z-index: 2;
+        margin-right: 15px;
+    }
+ }
+
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    .bola{
+        position:absolute;
+        width: 1350px;
+        height: 1000px;
+        /* background-color: #eca1a6; */
+        background: #8E2DE2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5500ff, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+        border-radius: 500px;
+        left: -100px;
+        top: -650px;
+        z-index: 1;
+    }
+ }
+
+@media (min-width: 1200px) 
+{
+
+ }
