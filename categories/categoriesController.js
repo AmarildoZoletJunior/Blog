@@ -2,9 +2,10 @@
 const express = require("express");
 const router = express.Router();
 
+router.use(express.static("../../public"));
 
-router.get("/new",(req,resp)=>{
-    resp.send("rotas")
+router.get("/admin/categorias/novo",(req,resp)=>{
+    resp.render("admin/categories/new");
 })
 
 

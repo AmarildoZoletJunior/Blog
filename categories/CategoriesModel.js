@@ -12,6 +12,5 @@ const CategorieModal = connection.define("Categoria",{
     }
 })
 
-CategorieModal.sync({force:false});
 
 module.exports = CategorieModal;
