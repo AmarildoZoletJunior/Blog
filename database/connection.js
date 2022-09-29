@@ -1,6 +1,6 @@
 const { application } = require("express");
 const sequelize = require("sequelize");
-const connection = new sequelize("blog","root","junior123",{
+const connection = new sequelize("blog","root","Junior123",{
    host: "localhost",
    dialect: "mysql",
 });

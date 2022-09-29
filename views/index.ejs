@@ -22,31 +22,16 @@
             <div class="col-12">
                 <h3 class="text-center titulo"><img src="https://about.gitlab.com/images/press/logo/png/gitlab-logo-700.png" alt=""></h3>
             </div>
-            <div class="navbarHome mx-auto col-6 d-flex flex-row justify-content-between">
-                <div class=""><button class="rounded-2 buttonHome">Contato</button></div>
-                <div class=""><button class="rounded-2 buttonHome">Sobre</button></div>
-            </div>
     </div>
     <div class="container blog">
         <h1 class="text-center">Categorias</h1>
-        <div class="row">
-            <div class="col-6 mx-auto my-2">
-                <div class="card text-center d-flex align-items-center justify-content-center">
-                        <h3>Tecnologia</h3>
-                </div>
-            </div>
-            <div class="col-6 mx-auto my-2">
-                <div class="card bg-primary text-center d-flex align-items-center justify-content-center">
-                        <h3>Investimentos</h3>
-                </div>
-            </div>
         </div>
-        <div class="row">
-            <div class="col-12 mx-auto">
-                <div class="card bg-success text-center d-flex align-items-center justify-content-center">
-                        <h3>Curiosidades Sobre linguagens</h3>
-                </div>
-            </div>
+        <div class="tabela col-8 mx-auto">
+            <% resposta.forEach(function(categorias){ %>
+                <!-- <div class="card btn-one text-center d-flex align-items-center justify-content-center"> -->
+                 <a href="#"><span><%= categorias.title %></span></a>
+            <!-- </div> -->
+            <% }); %>
         </div>
     </div>
 </body>

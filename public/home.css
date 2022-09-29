@@ -4,6 +4,20 @@ html{
 body{
     background: #20BDFF;
 }
+.tabela{
+    overflow: auto;
+    height:450px;
+    width: 610px;
+  /* From https://css.glass */
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 4;
+    position:relative;
+}
 .corpo{
     height: 55vh;
     /* From https://css.glass */
@@ -33,7 +47,7 @@ background: linear-gradient(to right, #5500ff, #8E2DE2); /* W3C, IE 10+/ Edge, F
     z-index: 0;
 }
 .titulo img{
-    width: 250px;
+    width: 150px;
     position:relative;
     z-index: 2;
     color: white;
@@ -59,11 +73,61 @@ background: linear-gradient(to right, #5500ff, #8E2DE2); /* W3C, IE 10+/ Edge, F
     position:relative;
     z-index: 3;
 }
-.card{
+/* .card{
+    margin:2px;
+    z-index: 4;
     cursor:pointer;
     height: 100px;
     line-height: 50px;
-}
+    background-color: #190087;
+    color: white;
+} */
+.wrapper{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  a{
+    display: block;
+    width: 100%;
+    height: 120px;
+    line-height: 120px;
+    font-size: 18px;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: white;
+    border: 2px solid #333;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+    transition: all .35s;
+  }
+  
+  a span{
+    position: relative;
+    z-index: 2;
+  }
+  
+  a:after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #ff003b;
+    transition: all .35s;
+  }
+  
+  a:hover{
+    color: #fff;
+  }
+  
+  a:hover:after{
+    width: 100%;
+  }
 @media (max-width: 575.98px) { 
     .bola{
         position:absolute;

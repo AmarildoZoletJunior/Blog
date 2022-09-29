@@ -21,17 +21,14 @@ app.use(bodyParser.json())
 
 //Aplicação de controles de rotas
 app.use("/",categories);
-app.use("/",articles)
+app.use("/",articles);
 
 //Rota principal
-app.get("/",(req,resp)=>{
-    resp.render("index");
-})
 
 
 
 //Configuração iniciar servidor
-app.listen(3000,"192.168.0.100",(()=>{
+app.listen(3000,"192.168.0.103",(()=>{
     try{
         console.log("Servidor iniciado com sucesso. 192.168.0.100");
     }catch(erro){

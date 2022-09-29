@@ -25,6 +25,8 @@ Category.hasMany(ArticleModel)
 //Relacionamento: Um artigo pertence a uma categoria
 ArticleModel.belongsTo(Category);
 
+//ArticleModel.sync({force:true})
+
 
 
 module.exports = ArticleModel;
