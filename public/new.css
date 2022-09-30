@@ -1,9 +1,14 @@
 .total{
-  width: 100vw;
-  height: 100vh;
+  margin-top: 20px;
+  width: 80vw;
+  height: 20vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+#article{
+  height: 50px;
+  width: 150px;
 }
 @keyframes color {
   0%   { background: #33CCCC; }

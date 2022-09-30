@@ -3,6 +3,7 @@ const sequelize = require("sequelize");
 const connection = new sequelize("blog","root","Junior123",{
    host: "localhost",
    dialect: "mysql",
+   timezone: "-03:00"
 });
 
 

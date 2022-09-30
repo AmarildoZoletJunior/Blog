@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="/new.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina de modificação</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link mx-2" href="/admin/painel">Painel de categorias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/artigos/painel">Painel de artigos</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+    <div class="container total">
+        <div class="col-8">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="text-center">Modificar categoria</h1>
+        </div>
+        <div class="card-body">
+        <form action="/admin/editar/novoedit" method="POST">
+            <label for="">Titulo da categoria</label>
+            <input type="text" name="titulo" value="<%= card.title %>" class="form-control">
+            <input type="hidden" name="slug" value="<%= card.slug %>" class="form-control">
+            <input type="hidden" name="id" value="<%= card.id %>" class="form-control">
+            <div class="container d-flex flex-column justify-content-center align-items-center mt-5">
+            <button class="bg-success rounded-2">Cadastrar</button>
+        </div>
+        </form>
+    </div>
+</div>
+    </div>
+</div>
+</body>
+<%- include ('../../components/links.ejs') %>

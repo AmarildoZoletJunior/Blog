@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="/panel.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link mx-2" href="/admin/painel">Painel de categorias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/artigos/painel"><b> Painel de artigos</b></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div class="container">
+        <div class="col-12 d-flex flex-row justify-content-between align-items-end">
+        <h1 class="mt-5">Painel de artigos</h1>
+        <button onclick="location.href='/admin/artigos/criar'" class="btn btn-success w-20 h-50">Criar novo artigo</button>
+    </div>
+        <hr>
+       <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Titulo
+                </th>
+                <th>
+                    URL
+                </th>
+                <th>
+                    Categoria
+                </th>
+                <th>
+                    Ações
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% resposta.forEach(function(artigos){ %>
+            <tr>
+                <th><%= artigos.id %></th>
+                <th><%= artigos.title %></th>
+                <th><%= artigos.slug %></th>
+                <th><%= artigos.Categorium.title %></th>
+                <th>
+                    <button type="button" onclick="location.href='/admin/editar/<%= artigos.id %>'" class="btn btn-primary mx-2">Editar</button>
+                    <form action="/admin/artigos/remover" method="post" style="display: inline;" onsubmit="deleteConfirm(event)">
+                        <input type="hidden" value="<%= artigos.id %>" name="id" >
+                    <button type="submit" class="btn btn-danger mx-2">Remover</button>
+                </form>
+                </th>
+            </tr>
+            <% }); %>
+        </tbody>
+       </table>
+    </div>
+    <script>
+     function deleteConfirm(event){
+        let choice = confirm("Deseja deletar este artigo?")
+        if(choice){
+        }else{
+            event.preventDefault()
+        }
+    }
+    </script>
+</body>
+<%- include ('../../components/links.ejs') %>

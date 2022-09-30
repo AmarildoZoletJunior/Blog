@@ -1,3 +1,11 @@
 .botoes{
    margin: 0;
 }
+.enviar{
+   text-decoration: none;
+   color: white;
+}
+.link{
+   text-decoration: none;
+   color: white;
+}
