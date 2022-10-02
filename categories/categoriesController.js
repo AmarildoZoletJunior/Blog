@@ -4,10 +4,17 @@ const router = express.Router();
 const Modal = require("./CategoriesModel");
 const slugifi = require("slugify");
 
+
+/*Criando uma rota que lê uma pagina criada no EJS, nela contém um form que manda 
+a resposta para o /admin/categorias/salvar                   */
 router.get("/admin/categorias/novo",(req,resp)=>{
     resp.render("admin/categories/new");
 })
 
+
+/* Nesta rota estou salvando os dados recebidos da pagina /admin/categorias/novo
+enviados através do form da pagina, que tem um link que redireciona para esta rota com 
+as informações */
 router.post("/admin/categorias/salvar",(req,resp)=>{
     let title = req.body.titulo;
     if(title !== undefined && title !== ""){
@@ -25,6 +32,9 @@ router.post("/admin/categorias/salvar",(req,resp)=>{
 }
 })
 
+
+
+/* Esta é a rota principal, onde sera listada todas as categorias disponiveis */
 router.get("/",(req,resp)=>{
     Modal.findAll({raw:true}).then((card)=>{
         resp.render("index",
@@ -33,6 +43,10 @@ router.get("/",(req,resp)=>{
         });
     })
 })
+
+/* Rota de controle que renderiza todas as categorias disponiveis.
+Nesta rota ela contem um form que caso queira deletar uma categoria
+ela envia o numero do id da categoria para a rota /admin/removercategoria */
 router.get("/admin/painel",(req,resp)=>{
     Modal.findAll({raw:true}).then((card)=>{
         resp.render("admin/categories/panel",
@@ -41,6 +55,8 @@ router.get("/admin/painel",(req,resp)=>{
         });
     })
 })
+
+/* Nesta pagina sera deletada a categoria que o usuario selecionar */
 router.post("/admin/removercategoria",(req,resp)=>{
     Modal.findOne(({raw:true},{where: { id: req.body.id }})).then((resposta)=>{
         Modal.destroy({
@@ -51,6 +67,9 @@ router.post("/admin/removercategoria",(req,resp)=>{
         })
     })
 })
+
+/* Nesta rota esta sendo recebido os dados da categoria com um form escondido,
+mesmo método usado para remover uma categoria. */
 router.get("/admin/editar/:id",(req,resp)=>{
     let id = req.params.id;
     Modal.findOne(({raw:true},{where: {id: id}})).then((card)=>{
@@ -59,6 +78,10 @@ router.get("/admin/editar/:id",(req,resp)=>{
         })
     })
 })
+
+
+/* Nesta rota está recebendo o form da rota /admin/editar/:id acima,
+contendo as informações que o usuario editou */
 router.post("/admin/editar/novoedit",async(req,resp)=> {
     let id = req.body.id;
        await Modal.update({

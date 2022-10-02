@@ -29,7 +29,7 @@
         <div class="tabela col-8 mx-auto">
             <% resposta.forEach(function(categorias){ %>
                 <!-- <div class="card btn-one text-center d-flex align-items-center justify-content-center"> -->
-                 <a href="#"><span><%= categorias.title %></span></a>
+                 <a href="admin/<%= categorias.id %>/artigos"><span><%= categorias.title %></span></a>
             <!-- </div> -->
             <% }); %>
         </div>

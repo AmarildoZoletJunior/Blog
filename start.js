@@ -28,7 +28,7 @@ app.use("/",articles);
 
 
 //Configuração iniciar servidor
-app.listen(3000,"192.168.0.103",(()=>{
+app.listen(3000,"192.168.0.193",(()=>{
     try{
         console.log("Servidor iniciado com sucesso. 192.168.0.193");
     }catch(erro){

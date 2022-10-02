@@ -42,7 +42,7 @@ router.post("/artigos/save",(req,resp)=>{
         body: corpo,
         CategoriumId: category,
     }).then((resposta)=>{
-        resp.redirect("/admin/artigos")
+        resp.redirect("/admin/painel")
     })
 }else{
     resp.redirect("/admin/artigos/criar");
@@ -58,6 +58,31 @@ router.post("/admin/artigos/remover",(req,resp)=>{
     }).then(()=>{
         console.log("Removido com sucesso")
         resp.redirect("/admin/artigos/painel");
+    })
+})
+
+/* Nesta rota estamos renderizando a pagina com as informações do modal
+e também do article, para termos a lista de artigos de uma categoria */
+router.get("/:idCategorias/artigos",(req,resp)=>{
+    Model.findOne({where: {id: req.params.idCategorias}}).then((resposta2)=>{
+    Article.findAll(({where: {CategoriumId: req.params.idCategorias},include: [{model: Model}]})).then((resposta)=>{
+            resp.render("admin/articles/read",{
+                resposta:resposta,
+                respostadois: resposta2
+            })
+        })
+    })
+})
+
+/* Aqui esta uma pagina que renderiza o artigo solo, nesta pagina esta sendo pego o numero da categoria
+e também o slug do artigo */
+router.get("/artigo/:idCategoria/:SlugArtigo", (req,resp)=>{
+     Article.findOne({where: {id: req.params.idCategoria}}).then((resposta)=>{
+        
+        resp.render("admin/articles/readsolo",{
+            resposta:resposta
+        });
+        console.log("teste" + resposta)
     })
 })
 
