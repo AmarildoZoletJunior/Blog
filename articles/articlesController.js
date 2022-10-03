@@ -84,13 +84,18 @@ router.get("/:idCategorias/artigos/:idPagina",(req,resp)=>{
        }else{
         proximo = true;
        }
-
+       let Parse = parseInt(pagina);
+       let totalFrente = String(Parse+1);
+       let totalTras = String(Parse-1);
+       let momento =  String(Parse);
        let resultado = {
         proximo : proximo,
         artigos: artigos,
+        numberPaginaFrente:totalFrente,
+        numberPaginaTras: totalTras,
+        numberMomento: momento,
        }
        resp.render("admin/articles/read",{
-        idpagina:pagina ,
         resposta:resposta,
         respostadois: resposta2,
         resultado:resultado
@@ -131,32 +136,5 @@ router.post("/admin/artigos/salvaredit",(req,resp)=>{
             resp.redirect("/admin/artigos/painel")
         })
     })
-
-// router.get("/artigos/pagina/:numero",(req,resp)=>{
-//     let pagina = req.params.numero;
-//     let offset = 1;
-//     if(isNaN(pagina) || pagina <= 1){
-//         offset = 0;
-//     }else{
-//         offset = (parseInt(pagina) * 4)-4;
-//     }
-//     Article.findAndCountAll({
-//         limit: 4,
-//         offset: offset
-//     }).then((artigos)=>{
-//        let proximo;
-//        if ( offset + 4 >= artigos.count){
-//         proximo = false;
-//        }else{
-//         proximo = true;
-//        }
-
-//        let resultado = {
-//         proximo : proximo,
-//         artigos: artigos,
-//        }
-//        resp.json(resultado)
-//     })
-// })
 
 module.exports = router;

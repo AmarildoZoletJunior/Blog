@@ -48,11 +48,18 @@
        
   
 </div>
-  <% if(resultado.proximo == true){ %>
-  <button class="btn btn-primary mt-2" onclick="location.href='/<%= resposta.CategoriumId %>/artigos/<%= idpagina.pagina %>'"  style="float:right">proxima pagina</button>
+  <% if(resultado.proximo === true){ %>
+  <button class="btn btn-primary mt-2" onclick="location.href='/<%= respostadois.id %>/artigos/<%= resultado.numberPaginaFrente %>'"  style="float:right">Proxima pagina</button>
   <% } else{ %>
 
     <% }; %>
+  
+    <% if(resultado.numberMomento !== "1"){ %>
+      <button class="btn btn-primary mt-2" onclick="location.href='/<%= respostadois.id %>/artigos/<%= resultado.numberPaginaTras %>'"  style="float:left">Voltar pagina</button>
+      <% } else{ %>
+    
+        <% }; %>
+      
 </div>
 </body>
 <%- include('../../components/links.ejs') %>
