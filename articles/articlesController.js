@@ -63,15 +63,41 @@ router.post("/admin/artigos/remover",(req,resp)=>{
 
 /* Nesta rota estamos renderizando a pagina com as informações do modal
 e também do article, para termos a lista de artigos de uma categoria */
-router.get("/:idCategorias/artigos",(req,resp)=>{
+router.get("/:idCategorias/artigos/:idPagina",(req,resp)=>{
     Model.findOne({where: {id: req.params.idCategorias}}).then((resposta2)=>{
     Article.findAll(({where: {CategoriumId: req.params.idCategorias},include: [{model: Model}]})).then((resposta)=>{
-            resp.render("admin/articles/read",{
-                resposta:resposta,
-                respostadois: resposta2
-            })
+      
+    let pagina = req.params.idPagina;
+    let offset = 0;
+    if(isNaN(pagina) || pagina <= 1){
+        offset = 0;
+    }else{
+        offset = (parseInt(pagina) * 4)-4;
+    }
+    Article.findAndCountAll({where: {CategoriumId: req.params.idCategorias},include: [{model: Model}],
+        limit: 4,
+        offset: offset,
+    }).then((artigos)=>{
+       let proximo;
+       if ( offset + 4 >= artigos.count){
+        proximo = false;
+       }else{
+        proximo = true;
+       }
+
+       let resultado = {
+        proximo : proximo,
+        artigos: artigos,
+       }
+       resp.render("admin/articles/read",{
+        idpagina:pagina ,
+        resposta:resposta,
+        respostadois: resposta2,
+        resultado:resultado
+    })
         })
     })
+})
 })
 
 /* Aqui esta uma pagina que renderiza o artigo solo, nesta pagina esta sendo pego o numero da categoria
@@ -82,9 +108,55 @@ router.get("/artigo/:idCategoria/:SlugArtigo", (req,resp)=>{
         resp.render("admin/articles/readsolo",{
             resposta:resposta
         });
-        console.log("teste" + resposta)
     })
 })
 
+router.post("/admin/artigos/editar",(req,resp)=>{
+    Article.findOne({where: {id: req.body.id}}).then((resposta1)=>{
+        Model.findOne(({where: {id: req.body.id2}})).then((resposta2)=>{
+            resp.render("admin/articles/edit",{
+                resposta:resposta1,
+                resposta2: resposta2
+            })
+        })
+    })
+})
+
+router.post("/admin/artigos/salvaredit",(req,resp)=>{
+        Article.update({  
+            title: req.body.title,
+            slug: slugify(req.body.title),
+            body: req.body.article,
+        },{where: {id: req.body.idArtigo}}).then((resposta)=>{
+            resp.redirect("/admin/artigos/painel")
+        })
+    })
+
+// router.get("/artigos/pagina/:numero",(req,resp)=>{
+//     let pagina = req.params.numero;
+//     let offset = 1;
+//     if(isNaN(pagina) || pagina <= 1){
+//         offset = 0;
+//     }else{
+//         offset = (parseInt(pagina) * 4)-4;
+//     }
+//     Article.findAndCountAll({
+//         limit: 4,
+//         offset: offset
+//     }).then((artigos)=>{
+//        let proximo;
+//        if ( offset + 4 >= artigos.count){
+//         proximo = false;
+//        }else{
+//         proximo = true;
+//        }
+
+//        let resultado = {
+//         proximo : proximo,
+//         artigos: artigos,
+//        }
+//        resp.json(resultado)
+//     })
+// })
 
 module.exports = router;

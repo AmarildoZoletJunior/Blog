@@ -56,7 +56,11 @@
                 <th><%= artigos.slug %></th>
                 <th><%= artigos.Categorium.title %></th>
                 <th>
-                    <button type="button" onclick="location.href='/admin/editar/<%= artigos.id %>'" class="btn btn-primary mx-2">Editar</button>
+                    <form action="/admin/artigos/editar" method="post" style="display: inline;">
+                        <input type="hidden" value="<%= artigos.id %>" name="id" >
+                        <input type="hidden" value="<%= artigos.CategoriumId %>" name="id2" >
+                    <button type="submit" class="btn btn-primary mx-2">Editar</button>
+                </form>
                     <form action="/admin/artigos/remover" method="post" style="display: inline;" onsubmit="deleteConfirm(event)">
                         <input type="hidden" value="<%= artigos.id %>" name="id" >
                     <button type="submit" class="btn btn-danger mx-2">Remover</button>

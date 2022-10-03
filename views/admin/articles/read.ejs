@@ -10,17 +10,49 @@
     <title>Pagina de leitura de artigos</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <img src="https://cdn-icons-png.flaticon.com/512/60/60736.png" style="width: 80px; margin-left: 50px;" alt="">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Lista de categorias</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     <div class="container col-8">
+        <div class="card mt-5">
+        <div class="card-header">
         <h2 class="text-center"><%= respostadois.title %></h2>
-
-        <% resposta.forEach(function(resposta){ %>
-            <div class="col-6 bg-primary">
-        <h1> <%= resposta.title %></h1>
-            <button  onclick="location.href='/artigo/<%= resposta.id %>/<%= respostadois.slug %>'" type="submit">Ver Artigo</button> 
     </div>
+    <div class="card-body">
+        <p>Esta sessão pertence a categoria <%= respostadois.title %>, Abaixo estão todos os artigos relacionados a ela</p>
+        <button class="btn btn-primary" onclick="location.href='/'">Ver outras categorias</button>
+    </div>
+    </div>
+    <hr>
+        <% resultado.artigos.rows.forEach(function(resposta){ %>
+            <div class="col-12 mt-2">
+                <div class="card">
+                    <div class="card-header">
+        <h1> <%= resposta.title %></h1>
+    </div>
+    <div class="card-body">
+        <button class="btn btn-success"  onclick="location.href='/artigo/<%= resposta.id %>/<%= respostadois.slug %>'" type="submit">Ver Artigo</button> 
+    </div>
+
+</div>
         <% }); %>
        
- 
+  
+</div>
+  <% if(resultado.proximo == true){ %>
+  <button class="btn btn-primary mt-2" onclick="location.href='/<%= resposta.CategoriumId %>/artigos/<%= idpagina.pagina %>'"  style="float:right">proxima pagina</button>
+  <% } else{ %>
+
+    <% }; %>
 </div>
 </body>
 <%- include('../../components/links.ejs') %>

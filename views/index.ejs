@@ -15,7 +15,7 @@
     <div class="bola"></div>
         <ul class="nav d-flex flex-row justify-content-end mx-5">
             <li class="nav-item">
-                <button class="rounded-2 border-none Login mt-2">Sobre</button>
+                <button class="rounded-2 border-none Login mt-2">Login</button>
             </li>
         </ul>
         <div class="container">
@@ -29,7 +29,7 @@
         <div class="tabela col-8 mx-auto">
             <% resposta.forEach(function(categorias){ %>
                 <!-- <div class="card btn-one text-center d-flex align-items-center justify-content-center"> -->
-                 <a href="admin/<%= categorias.id %>/artigos"><span><%= categorias.title %></span></a>
+                 <a href="<%= categorias.id %>/artigos/1"><span><%= categorias.title %></span></a>
             <!-- </div> -->
             <% }); %>
         </div>
