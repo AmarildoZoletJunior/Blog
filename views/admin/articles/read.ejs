@@ -22,6 +22,7 @@
           </ul>
         </div>
       </nav>
+      <% if(resultado.contador > 0){ %>
     <div class="container col-8">
         <div class="card mt-5">
         <div class="card-header">
@@ -59,7 +60,11 @@
       <% } else{ %>
     
         <% }; %>
-      
 </div>
+<% } else{ %>
+  <div class="container d-flex justify-content-center align-items-center">
+    <h1>Não tem artigos disponivel para esta categoria</h1>
+  </div>
+  <% }; %>
 </body>
 <%- include('../../components/links.ejs') %>

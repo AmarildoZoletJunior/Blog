@@ -1,12 +1,19 @@
+//Configs
 const express = require("express");
 const app = express();
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const connection = require("./database/connection");
+
+//Model
 const CategorieModel = require("./categories/CategoriesModel");
 const ArticleModel = require("./articles/articlesModel");
+const UserModel = require("./user/userModel");
+
+//Controller
 const categories = require("./categories/categoriesController");
 const articles = require("./articles/articlesController");
+const user = require("./user/userController");
 
 //Configuração de engine 
 app.set("view engine", "ejs");
@@ -20,15 +27,17 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json())
 
 //Aplicação de controles de rotas
+app.use("/",user);
 app.use("/",categories);
 app.use("/",articles);
+
 
 //Rota principal
 
 
 
 //Configuração iniciar servidor
-app.listen(3000,"192.168.0.193",(()=>{
+app.listen(3000,"10.197.11.233",(()=>{
     try{
         console.log("Servidor iniciado com sucesso. 192.168.0.45");
     }catch(erro){

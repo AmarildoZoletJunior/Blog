@@ -89,6 +89,7 @@ router.get("/:idCategorias/artigos/:idPagina",(req,resp)=>{
        let totalTras = String(Parse-1);
        let momento =  String(Parse);
        let resultado = {
+        contador: artigos.count,
         proximo : proximo,
         artigos: artigos,
         numberPaginaFrente:totalFrente,
