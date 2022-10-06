@@ -1,0 +1,11 @@
+.centro{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario input{
+    margin-bottom: 15px;
+}
