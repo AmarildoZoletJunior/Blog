@@ -10,21 +10,56 @@
     <title>Registrar nova conta</title>
 </head>
 <body>
-    <div class="container centro">
+    <div class="container centro d-flex flex-column">
         <div class="col-4 card">
-        <form class="formulario card-body" action="" method="post">
+            <div class="card-header text-center">
+                <h2>Cadastro</h2>
+            </div>
+        <form class="formulario card-body" action="/registerConfirm" method="post" onsubmit="definir(event)">
             <label for="">Email</label>
             <input class="form-control email" name="email" type="text" placeholder="Digite seu email">
             <label for="">Senha</label>
-            <input class="form-control senha" type="text" name="senha" placeholder="Digite sua senha">
+            <input class="form-control senha" type="password" name="password" placeholder="Digite sua senha">
             <label for="">Confirmar senha</label>
-            <input class="form-control confirmarSenha" type="text" name="confirmarSenha" placeholder="Confirme sua senha">
-            <button class="btn btn-success mt-2" type="submit">Cadastrar</button>
+            <input class="form-control confirmarSenha" type="password" name="confirmarSenha" placeholder="Confirme sua senha">
+            <button class="btn btn-success mt-2 confirm" type="submit">Cadastrar</button>
         </form>
     </div>
+    <p>Caso você ja tenha uma conta, se <a href="/login">entre aqui</a></p>
 </div>
     
 
 
 </body>
 <%- include ('../../components/links.ejs') %>
+
+
+<script>
+let email = document.querySelector(".email");
+let senha = document.querySelector(".senha");
+let confirmar = document.querySelector(".confirmarSenha");
+let botao = document.querySelector(".confirm");
+let regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+let definir = botao.addEventListener("click",(e)=>{
+    if(email.value.length < 1){
+        alert("Email vazio.");
+        e.preventDefault();
+    } else if (regexEmail.test(email.value) === false){
+        alert("O email esta invalido");
+        e.preventDefault();
+    } else if(senha.value.length < 1){
+        alert("Senha vazia");
+        e.preventDefault();
+    } else if(confirmar.value.length < 1){
+        alert("Senha de confirmação esta vazia");
+        e.preventDefault();
+    } else if(confirmar.value === senha.value){
+    }else{
+        alert("Confirmar senha e senha estão diferentes");
+        e.preventDefault();
+
+    }
+})
+
+</script>

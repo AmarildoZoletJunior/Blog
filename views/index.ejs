@@ -13,11 +13,32 @@
 
 <body>
     <div class="bola"></div>
+    <% if(teste === undefined){ %>
         <ul class="nav d-flex flex-row justify-content-end mx-5">
             <li class="nav-item">
-                <button onclick="location.href='/cadastrar'" class="rounded-2 border-none Login mt-2">Login</button>
+                <button onclick="location.href='/login'" class="rounded-2 border-none Login mt-2">Login</button>
+            </li>
+            <li class="nav-item">
+                <button onclick="location.href='/cadastrar'" class="rounded-2 border-none Login mt-2 mx-2">Cadastro</button>
             </li>
         </ul>
+        <% } else { %>
+            <% if(teste.email == "amarildozj@gmail.com"){ %>
+            <ul class="nav d-flex flex-row justify-content-end mx-5">
+                <li class="nav-item d-flex flex-row align-items-center">
+                    <button onclick="location.href='/admin/painel'" class="btn btn-primary rounded-2 border-none Login mt-2 mx-1">Painel</button>
+                    <button onclick="location.href='/logout'" class="btn btn-danger rounded-2 border-none Login mt-2 mx-1">Sair</button>
+                </li>
+            </ul>
+            <% } else{ %>
+                <ul class="nav d-flex flex-row justify-content-end mx-5">
+                    <li class="nav-item d-flex flex-row align-items-center">
+                        <h5>Bem vindo</h5>
+                        <button onclick="location.href='/logout'" class="btn btn-danger rounded-2 border-none Login mt-2 mx-1">Sair</button>
+                    </li>
+                </ul>
+                <% }; %>
+            <% }; %>
         <div class="container">
             <div class="col-12">
                 <h3 class="text-center titulo"><img src="https://about.gitlab.com/images/press/logo/png/gitlab-logo-700.png" alt=""></h3>

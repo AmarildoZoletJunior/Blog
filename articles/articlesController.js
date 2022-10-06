@@ -5,11 +5,12 @@ const router = express.Router();
 const Model = require("../categories/CategoriesModel");
 const Article = require("./articlesModel");
 const slugify = require("slugify");
+const permissao = require("../middlewares/middleware");
 
 
 //Painel de administração de artigos, ele recebe include model para
 //transformar os id das categorias em titulo delas
-router.get("/admin/artigos/painel",(req,resp)=>{
+router.get("/admin/artigos/painel",permissao,(req,resp)=>{
     Article.findAll({
         //incluindo informações da tabela de categorias no painel de artigos
         include: [{model: Model}]
@@ -21,7 +22,7 @@ router.get("/admin/artigos/painel",(req,resp)=>{
 })
 
 //incluindo rota para adiciona criar artigo, esta rota esta recebendo os id das categorias juntamente com os nomes
-router.get("/admin/artigos/criar",(req,resp)=>{
+router.get("/admin/artigos/criar",permissao,(req,resp)=>{
     //Aqui esta recebendo o Model das categorias para pode repassar informação das categorias
     Model.findAll().then((resposta)=>{
         resp.render("admin/articles/new",{
@@ -31,7 +32,7 @@ router.get("/admin/artigos/criar",(req,resp)=>{
 })
 
 //rota criada para salvar informação no banco de dados.
-router.post("/artigos/save",(req,resp)=>{
+router.post("/artigos/save",permissao,(req,resp)=>{
     let title = req.body.title;
     let corpo = req.body.article;
     let category = req.body.category;
@@ -52,7 +53,7 @@ router.post("/artigos/save",(req,resp)=>{
 
 //rota para remover algum artigo do banco, aqui estamos recebendo o id que esta armazenado em um
 //input escondido dentro da pagina artigos
-router.post("/admin/artigos/remover",(req,resp)=>{
+router.post("/admin/artigos/remover",permissao,(req,resp)=>{
     Article.destroy({
         where:{ id: req.body.id},
     }).then(()=>{
@@ -108,7 +109,7 @@ router.get("/:idCategorias/artigos/:idPagina",(req,resp)=>{
 
 /* Aqui esta uma pagina que renderiza o artigo solo, nesta pagina esta sendo pego o numero da categoria
 e também o slug do artigo */
-router.get("/artigo/:idCategoria/:SlugArtigo", (req,resp)=>{
+router.get("/artigo/:idCategoria/:SlugArtigo",(req,resp)=>{
      Article.findOne({where: {id: req.params.idCategoria}}).then((resposta)=>{
         
         resp.render("admin/articles/readsolo",{
@@ -117,7 +118,7 @@ router.get("/artigo/:idCategoria/:SlugArtigo", (req,resp)=>{
     })
 })
 
-router.post("/admin/artigos/editar",(req,resp)=>{
+router.post("/admin/artigos/editar",permissao,(req,resp)=>{
     Article.findOne({where: {id: req.body.id}}).then((resposta1)=>{
         Model.findOne(({where: {id: req.body.id2}})).then((resposta2)=>{
             resp.render("admin/articles/edit",{
@@ -128,7 +129,7 @@ router.post("/admin/artigos/editar",(req,resp)=>{
     })
 })
 
-router.post("/admin/artigos/salvaredit",(req,resp)=>{
+router.post("/admin/artigos/salvaredit",permissao,(req,resp)=>{
         Article.update({  
             title: req.body.title,
             slug: slugify(req.body.title),
